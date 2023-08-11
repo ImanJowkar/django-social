@@ -16,9 +16,9 @@ Including another URLconf
 """
 
 from django.urls import path
-from home import views
+from account import views
 
-app_name = 'home'
+app_name = 'account'
 urlpatterns = [
-    path('', views.HomeView.as_view(), name='home')
+    path('register/', views.RegisterView.as_view(), name='user-register')
 ]
