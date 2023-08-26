@@ -6,9 +6,14 @@
 
 
 {% block content %}
+    {% if request.user.id == post.publisher.id %}
+    <a href="{% url 'post:post-delete' post.id %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'post:post-update' post.id %}" class="btn btn-info">update</a>
+    {% endif %}
+
     <div class="card">
         <h1>{{ post.slug }} </h1>
-        <p><b>Auther:</b> {{ post.publisher.username }}</p>
+        <p><b>Auther:</b> <a href="{% url 'account:user-profile' post.publisher.id %}">{{ post.publisher.username }} - {{ post.updated }}</a></p>
         <p>{{ post.body }}</p>
         <p>{{ post.created }}</p>
         <p>{{ post.updated }}</p>

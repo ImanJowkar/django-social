@@ -20,6 +20,8 @@ from post import views
 
 app_name = 'post'
 urlpatterns = [
-    path('posts/', views.PostView.as_view(), name='all-post'),
-    path('posts/<int:post_id>/<slug:post_slug>/', views.PostDetailView.as_view(), name='post-detail'),
+    path('', views.PostView.as_view(), name='all-post'),
+    path('<int:post_id>/<slug:post_slug>/', views.PostDetailView.as_view(), name='post-detail'),
+    path('delete/<int:post_id>/', views.PostDeleteView.as_view(), name='post-delete'),
+    path('update/<int:post_id>/', views.PostUpdateView.as_view(), name='post-update')
 ]
